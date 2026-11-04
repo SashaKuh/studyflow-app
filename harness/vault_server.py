@@ -73,7 +73,16 @@ class VaultService:
                       for p in (self.root/folder).glob('*.md'))
 
     def search_notes(self, query: str, limit: int = 5) -> list[dict]:
-        """Baseline exact text matching; PR7 replaces ranking behind this signature."""
+        """Find notes with semantic vectors; lexical mode is retained for evaluation."""
+        if os.getenv('STUDYFLOW_RETRIEVAL_MODE', 'semantic') == 'semantic':
+            from .vector_index import search
+            notes = [(str(p.relative_to(self.root)), p.read_text(encoding='utf8'))
+                     for p in self._all_notes()]
+            return search(notes, query, limit)
+        return self.search_notes_lexical(query, limit)
+
+    def search_notes_lexical(self, query: str, limit: int = 5) -> list[dict]:
+        """Original PR3 exact-word baseline, kept for the same-question comparison."""
         if not query.strip():
             return []
         words = query.casefold().split()

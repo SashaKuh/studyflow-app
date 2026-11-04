@@ -4,7 +4,8 @@ import subprocess
 from harness.vault_server import VaultService
 
 
-def test_ingest_idempotent_and_retrievable(tmp_path):
+def test_ingest_idempotent_and_retrievable(tmp_path, monkeypatch):
+    monkeypatch.setenv('STUDYFLOW_RETRIEVAL_MODE', 'lexical')
     subprocess.run(['git', 'init', '-b', 'main', str(tmp_path)], check=True, capture_output=True)
     subprocess.run(['git', 'config', 'user.name', 'Test'], cwd=tmp_path, check=True)
     subprocess.run(['git', 'config', 'user.email', 'test@example.com'], cwd=tmp_path, check=True)

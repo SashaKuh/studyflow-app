@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "studyflow-vault": {
+      "type": "stdio",
+      "command": "bash",
+      "args": ["scripts/run-vault-server.sh"]
+    },
+    "github-readonly": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/readonly",
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    }
+  }
+}

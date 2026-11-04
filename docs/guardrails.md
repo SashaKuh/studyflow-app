@@ -12,7 +12,7 @@
 
 | Правило | Приклад | Перевірка |
 |---|---|---|
-| W1 Редагування ядра зберігання | `Edit studyflow/storage.py` | hook повертає `ask` |
+| W1 Редагування ядра зберігання й валідації | `Edit studyflow/storage.py` або `domain.py` | hook повертає `ask` |
 | W2 Зміна схеми бази | Bash з `ALTER TABLE` | hook повертає `ask` |
 | W3 Коміт із Claude Code | Bash `git commit` | hook повертає `ask` |
 

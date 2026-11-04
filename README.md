@@ -10,6 +10,7 @@ python3.12 -m venv ../../.venv
 ../../.venv/bin/studyflow --db demo.db add 'Прочитати розділ' --course Англійська --due 2026-11-10
 ../../.venv/bin/studyflow --db demo.db list
 ../../.venv/bin/studyflow --db demo.db summary
+../../.venv/bin/studyflow --db demo.db upcoming --days 7
 ../../.venv/bin/pytest -q
 ```
 

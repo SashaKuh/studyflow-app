@@ -1,3 +1,0 @@
-[console_scripts]
-studyflow = studyflow.cli:main
-studyflow-vault = harness.vault_server:main
